@@ -10,7 +10,13 @@
       android:supportsRtl="true"
       android:theme="@style/Theme.Main">
     <activity
-        android:name="xx.yy.qian.MainActivity"
+        android:name=".RegisterActivity"
+        android:exported="false" />
+    <activity
+        android:name=".MainActivity"
+        android:exported="true" />
+    <activity
+        android:name=".PreActivity"
         android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
