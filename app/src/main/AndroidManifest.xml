@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="xx.yy.main">
+    package="xx.yy.qian">
 
   <application
       android:allowBackup="true"
@@ -10,7 +10,7 @@
       android:supportsRtl="true"
       android:theme="@style/Theme.Main">
     <activity
-        android:name=".MainActivity"
+        android:name="xx.yy.qian.MainActivity"
         android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
