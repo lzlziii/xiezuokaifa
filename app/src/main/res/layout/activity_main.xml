@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:suspend="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+  <androidx.appcompat.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="?attr/actionBarSize"
+      android:background="#2196F3"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:navigationIcon="@drawable/ic_baseline_add_24">
+
+    <ImageView
+        android:id="@+id/handimg"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/ic_launcher_foreground"
+        tools:layout_editor_absoluteX="184dp">
+    </ImageView>
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="0dp"
+        android:text="时间管理"
+        android:textSize="30sp"
+        android:gravity="center">
+    </TextView>
+  </androidx.appcompat.widget.Toolbar>
+
+  <FrameLayout
+      android:id="@+id/left_fragment"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      app:layout_constraintBottom_toTopOf="@+id/tabtool"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+  <!--    <com.laocaixw.layout.SuspendButtonLayout-->
+  <!--        android:id="@+id/layout"-->
+  <!--        android:layout_width="match_parent"-->
+  <!--        android:layout_height="match_parent"-->
+  <!--        suspend:distance="80dp"-->
+  <!--        suspend:image1="@mipmap/suspend_1"-->
+  <!--        suspend:image2="@mipmap/suspend_2"-->
+  <!--        suspend:image3="@mipmap/suspend_3"-->
+  <!--        suspend:imageMainClose="@mipmap/suspend_main_close"-->
+  <!--        suspend:imageMainOpen="@mipmap/suspend_main_open"-->
+  <!--        suspend:imageSize="50dp"-->
+  <!--        suspend:marginY="100dp"-->
+  <!--        suspend:number="3" />-->
+
+  <LinearLayout
+      android:id="@+id/tabtool"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent">
+
+    <ImageView
+        android:id="@+id/tabimg1"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/rec"/>
+
+    <ImageView
+        android:id="@+id/tabimg2"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/type"/>
+
+    <ImageView
+        android:id="@+id/tabimg3"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/total"/>
+
+  </LinearLayout>
+  <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/guideline3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_begin="56dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
