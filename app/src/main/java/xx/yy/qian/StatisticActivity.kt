@@ -49,7 +49,7 @@ class StatisticActivity : AppCompatActivity() {
     //设置值得颜色
     pieData.setValueTextColor(Color.parseColor("#FFFFFF"))
     //设置值得大小
-    pieData.setValueTextSize(10f)
+    pieData.setValueTextSize(15f)
 
     val description = Description()
 
@@ -61,8 +61,11 @@ class StatisticActivity : AppCompatActivity() {
     pieChart.holeRadius = 0f
     //去掉半透明
     pieChart.setTransparentCircleAlpha(0)
+
     pieChart.setDrawEntryLabels(true)
+
     pieChart.invalidate()
-    pieChart.setEntryLabelTextSize(10F)
+
+    pieChart.setEntryLabelTextSize(15F)
   }
 }
