@@ -6,4 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".StatisticActivity">
 
+  <com.github.mikephil.charting.charts.PieChart
+      android:id="@+id/pieChart"
+      android:layout_width="match_parent"
+      android:layout_height="300dp"
+      android:layout_margin="20dp"
+      android:layout_marginStart="20dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
