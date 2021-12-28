@@ -11,7 +11,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -42,12 +41,13 @@ public class MainActivity extends AppCompatActivity {
 
     getSupportFragmentManager()
             .beginTransaction()
-            .replace(R.id.left_fragment, new RecFragment(), "RecFragment")
+            .replace(R.id.recfragment, new RecFragment(), "RecFragment")
             .commit();
 
     Toolbar toolbar = findViewById(R.id.toolbar);
 
     View dialog = getLayoutInflater().inflate(R.layout.dialog_view, null);
+    View dialog2 =getLayoutInflater().inflate(R.layout.dialog, null);
     editText = dialog.findViewById(R.id.editText1);
     timepicker = dialog.findViewById(R.id.time_picker);
     datepicker = dialog.findViewById(R.id.date_picker);
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         imageButton2.setImageDrawable(getResources().getDrawable(R.drawable.type));
         imageButton3.setImageDrawable(getResources().getDrawable(R.drawable.total));
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.left_fragment, new RecFragment(), "RecFragment").commit();
+        ft.replace(R.id.recfragment, new RecFragment(), "RecFragment").commit();
         toolbar.setNavigationIcon(R.drawable.ic_baseline_add_24);
       }
     });
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         imageButton2.setImageDrawable(getResources().getDrawable(R.drawable.chose));
         imageButton3.setImageDrawable(getResources().getDrawable(R.drawable.total));
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.left_fragment,new TypeFragment()).commit();
+        ft.replace(R.id.recfragment,new TypeFragment()).commit();
         toolbar.setNavigationIcon(null);
       }
     });
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         imageButton2.setImageDrawable(getResources().getDrawable(R.drawable.type));
         imageButton3.setImageDrawable(getResources().getDrawable(R.drawable.chose));
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.left_fragment,new TotalFragment()).commit();
+        ft.replace(R.id.recfragment,new TotalFragment()).commit();
         toolbar.setNavigationIcon(null);
       }
     });
@@ -162,26 +162,35 @@ public class MainActivity extends AppCompatActivity {
                 //取消不做任何处理
               }
             });
-    AlertDialog alert11 = builder.create();
+    AlertDialog alert1 = builder.create();
 
-////        SuspendButtonLayout suspendButtonLayout = (SuspendButtonLayout) findViewById(R.id.layout);
-////        suspendButtonLayout.setOnSuspendListener(new SuspendButtonLayout.OnSuspendListener() {
-////            @Override
-////            public void onButtonStatusChanged(int status) {
-////                // 监听按钮状态：展开、关闭、移动等
-////            }
-////
-////            @Override
-////            public void onChildButtonClick(int index) {
-////                if (index == 1)
-////                    alert11.show();
-////            }
-////        });
-//
+    AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
+    builder.setTitle("添加事务")
+            .setView(dialog2)
+            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+
+              }
+            })
+            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+                //取消不做任何处理
+              }
+            });
+    AlertDialog alert = builder.create();
+//    addthingbutton.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        alert.show();
+//      }
+//    });
+
     toolbar.setNavigationOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        alert11.show();
+        alert.show();
       }
     });
     //DataSupport.deleteAll(Thing.class);

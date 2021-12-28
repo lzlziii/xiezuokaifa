@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 import androidx.fragment.app.Fragment;
@@ -20,7 +22,6 @@ public class RecFragment extends Fragment {
     private View view;
     private static RecyclerView recyclerView;
     private static RecyclerAdapter recyclerAdapter;
-    Context context = getActivity();
     public List<Thing> thinglist;
 
     @Override
@@ -33,21 +34,29 @@ public class RecFragment extends Fragment {
         //加载新闻布局
         view = inflater.inflate(R.layout.rec_fragment,container,false);
 
-        recyclerView = view.findViewById(R.id.rv_successive_dynasties_things);
+//        recyclerView = view.findViewById(R.id.rv_successive_dynasties_things);
+//
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+//        recyclerView.setLayoutManager(linearLayoutManager);
+//        Connector.getDatabase();
+//        thinglist = DataSupport.findAll(Thing.class);
+//        recyclerAdapter = new RecyclerAdapter(thinglist);
+//        recyclerView.setAdapter(recyclerAdapter);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        Connector.getDatabase();
-        thinglist = DataSupport.findAll(Thing.class);
-        recyclerAdapter = new RecyclerAdapter(thinglist);
-        recyclerView.setAdapter(recyclerAdapter);
+        LinearLayout layout=view.findViewById(R.id.layout1);
+        for(int i=0;i<25;i++)
+        {
+            TextView textView = new TextView(getActivity());
+            textView.setText("测试");
+            layout.addView(textView);
+        }
 
         return view;
     }
     public void refresh(){
-        thinglist = DataSupport.findAll(Thing.class);
-        recyclerAdapter = new RecyclerAdapter(thinglist);
-        recyclerView.setAdapter(recyclerAdapter);
+//        thinglist = DataSupport.findAll(Thing.class);
+//        recyclerAdapter = new RecyclerAdapter(thinglist);
+//        recyclerView.setAdapter(recyclerAdapter);
     }
 }
 
