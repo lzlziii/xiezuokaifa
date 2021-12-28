@@ -9,9 +9,9 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
       android:theme="@style/Theme.Main">
-    <activity
-        android:name=".TypeEditActivity"
-        android:exported="false" />
+<!--    <activity-->
+<!--        android:name=".LinActivity"-->
+<!--        android:exported="false" />-->
     <activity
         android:name=".StatisticActivity"
         android:exported="false" />
@@ -22,7 +22,7 @@
         android:name=".MainActivity"
         android:exported="true" />
     <activity
-        android:name=".PreActivity"
+        android:name=".LinActivity"
         android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
