@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    >
+    tools:context=".MainActivity" >
 
   <androidx.appcompat.widget.Toolbar
       android:id="@+id/toolbar"
@@ -35,8 +34,8 @@
 
   <FrameLayout
       android:id="@+id/recfragment"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
       android:layout_weight="1" />
 
   <LinearLayout

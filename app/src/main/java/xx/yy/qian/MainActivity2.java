@@ -11,7 +11,7 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog);
+        setContentView(R.layout.rec_fragment2);
 
 //        LinearLayout layout=findViewById(R.id.layout1);
 //        for(int i=0;i<25;i++)

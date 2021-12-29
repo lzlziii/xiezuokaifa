@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
     editText = dialog.findViewById(R.id.editText1);
     timepicker = dialog.findViewById(R.id.time_picker);
     datepicker = dialog.findViewById(R.id.date_picker);
-    timepicker2 = dialog.findViewById(R.id.time_picker2);
-    datepicker2 = dialog.findViewById(R.id.date_picker2);
+    //timepicker2 = dialog.findViewById(R.id.time_picker2);
+    //datepicker2 = dialog.findViewById(R.id.date_picker2);
 
     imageButton1=findViewById(R.id.tabimg1);
     imageButton2=findViewById(R.id.tabimg2);
@@ -120,22 +120,22 @@ public class MainActivity extends AppCompatActivity {
         mine[0] =minute;
       }
     });
-    datepicker2.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
-      @Override
-      public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        tyear[1] =year;
-        tmonth[1] =monthOfYear;
-        tday[1] =dayOfMonth;
-      }
-    });
-
-    timepicker2.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {  //获取当前选择的时间
-      @Override
-      public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-        hour[1] =hourOfDay;
-        mine[1] =minute;
-      }
-    });
+//    datepicker2.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
+//      @Override
+//      public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//        tyear[1] =year;
+//        tmonth[1] =monthOfYear;
+//        tday[1] =dayOfMonth;
+//      }
+//    });
+//
+//    timepicker2.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {  //获取当前选择的时间
+//      @Override
+//      public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+//        hour[1] =hourOfDay;
+//        mine[1] =minute;
+//      }
+//    });
     AlertDialog.Builder builder = new AlertDialog.Builder(context);
     builder.setTitle("添加事务")
             .setView(dialog)
@@ -164,22 +164,22 @@ public class MainActivity extends AppCompatActivity {
             });
     AlertDialog alert1 = builder.create();
 
-    AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
-    builder.setTitle("添加事务")
-            .setView(dialog2)
-            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-              @Override
-              public void onClick(DialogInterface dialog, int which) {
-
-              }
-            })
-            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-              @Override
-              public void onClick(DialogInterface dialog, int which) {
-                //取消不做任何处理
-              }
-            });
-    AlertDialog alert = builder.create();
+//    AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
+//    builder.setTitle("添加事务")
+//            .setView(dialog2)
+//            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//              @Override
+//              public void onClick(DialogInterface dialog, int which) {
+//
+//              }
+//            })
+//            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+//              @Override
+//              public void onClick(DialogInterface dialog, int which) {
+//                //取消不做任何处理
+//              }
+//            });
+//    AlertDialog alert = builder.create();
 //    addthingbutton.setOnClickListener(new View.OnClickListener() {
 //      @Override
 //      public void onClick(View v) {
@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
     toolbar.setNavigationOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        alert.show();
+        alert1.show();
       }
     });
     //DataSupport.deleteAll(Thing.class);
