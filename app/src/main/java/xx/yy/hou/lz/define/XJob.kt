@@ -1,5 +1,6 @@
 package xx.yy.hou.lz.define
 
+import java.io.Serializable
 import java.util.*
 
 class XJob(
@@ -9,7 +10,7 @@ class XJob(
   var statement: String,
   var st: Date, // 开始时间
   var ed: Date, // 结束时间
-) : Comparable<XJob> {
+) : Comparable<XJob>, Serializable {
   override fun compareTo(other: XJob): Int {
     return if (this.st.time != other.st.time) {
       if (this.st.before(other.st)) -1 else 1
