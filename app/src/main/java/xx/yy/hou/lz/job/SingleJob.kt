@@ -4,8 +4,8 @@ import java.util.*
 
 // 还未开始的
 class SingleJob(
-  var type: Int,
-  var id: Int,
+  var type: Long,
+  var id: Long,
   var name: String,
   var statement: String,
   var st: Date, // 开始时间, 如果是周期性事件无开始结束

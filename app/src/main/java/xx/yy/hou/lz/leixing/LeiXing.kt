@@ -8,4 +8,3 @@ class LeiXing( // 0是根类型
   var name: String
 ): Serializable
 
-var leiXing = ArrayList<LeiXing>()

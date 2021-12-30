@@ -4,22 +4,22 @@ import java.io.Serializable
 import java.util.*
 
 object PeriodType {
-  var YEAR = 0
-  var MONTH = 1
-  var WEEK = 2
-  var DAY = 3
-  var HOUR = 4
+  var YEAR = 0L
+  var MONTH = 1L
+  var WEEK = 2L
+  var DAY = 3L
+  var HOUR = 4L
 }
 
 class Period(
-  var type: Int,
+  var type: Long,
   var st: Date,
   var ed: Date
 ) : Serializable
 
 class PeriodJob(
-  var type: Int,
-  var id: Int,
+  var type: Long,
+  var id: Long,
   var name: String,
   var statement: String,
   var periodList: List<Period>, // 周期列表

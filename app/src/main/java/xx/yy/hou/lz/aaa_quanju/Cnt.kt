@@ -1,4 +1,4 @@
-package xx.yy.hou.lz.count
+package xx.yy.hou.lz.aaa_quanju
 
 object Cnt {
   var cnt = 0L

@@ -1,4 +1,4 @@
-package xx.yy.testservice
+package xx.yy.hou.service
 
 import android.app.Service
 import android.content.Intent

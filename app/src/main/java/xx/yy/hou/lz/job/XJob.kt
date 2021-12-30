@@ -3,8 +3,8 @@ package xx.yy.hou.lz.job
 import java.util.*
 
 class XJob(
-  var type: Int,
-  var id: Int,
+  var type: Long,
+  var id: Long,
   var name: String,
   var statement: String,
   var st: Date, // 开始时间

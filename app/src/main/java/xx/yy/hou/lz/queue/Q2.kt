@@ -1,4 +1,9 @@
 package xx.yy.hou.lz.queue
 
-class Q2 {
+import xx.yy.hou.lz.job.SingleJob
+import xx.yy.hou.lz.aaa_quanju.Queue
+
+
+fun getQueue2(): ArrayList<SingleJob> {
+  return Queue.q2
 }
