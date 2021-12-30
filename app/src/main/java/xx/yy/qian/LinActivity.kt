@@ -17,6 +17,5 @@ class LinActivity : AppCompatActivity() {
       .beginTransaction()
       .replace(activityLinBinding.frameLayout.id, TypeEditFragment(), "zz")
       .commit()
-
   }
 }
