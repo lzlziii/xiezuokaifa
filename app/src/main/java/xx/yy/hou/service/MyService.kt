@@ -20,7 +20,7 @@ class MyService : Service() {
   }
 
   private val localBinder: IBinder = LocalBinder()
-  override fun onBind(intent: Intent): IBinder? {
+  override fun onBind(intent: Intent): IBinder {
     val s = intent.getStringExtra("data")
     Log.i(TAG, "onBind: 接收 $s")
     data.add(s)

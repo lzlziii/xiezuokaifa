@@ -3,20 +3,23 @@ package xx.yy.hou.service
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
-import android.util.Log
+import xx.yy.hou.lz.aaa.loadAll
+import xx.yy.hou.lz.aaa.saveAll
+import xx.yy.hou.lz.util.debug
 import java.util.*
 
 class MyService999 : Service() {
 
   class TT : TimerTask() {
     override fun run() {
-      Log.e("asdf", "ssssssss")
-
+      debug("周期性事件")
     }
   }
 
   override fun onCreate() {
-    Timer().schedule(TT(), 1000, 2000)
+//    Timer().schedule(TT(), 1000, 2000)
+    loadAll(this)
+    debug("999服务创建了")
   }
 
   override fun onBind(intent: Intent): IBinder? {
@@ -24,8 +27,9 @@ class MyService999 : Service() {
   }
 
   override fun onDestroy() {
+    saveAll(this)
     super.onDestroy()
-    Log.e("asdf", "结束")
+    debug("999服务没了")
   }
 }
 

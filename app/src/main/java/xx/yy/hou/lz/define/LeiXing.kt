@@ -7,4 +7,3 @@ class LeiXing( // 0是根类型
   var parentId: Int = 0,
   var name: String
 ): Serializable
-

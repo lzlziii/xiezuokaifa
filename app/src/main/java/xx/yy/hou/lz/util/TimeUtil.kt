@@ -1,12 +1,14 @@
 package xx.yy.hou.lz.util;
 
+import android.util.Log
 import xx.yy.hou.lz.define.Period
 import xx.yy.hou.lz.define.PeriodType
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 fun debug(x: Any?) {
-  System.err.println(x.toString())
+  Log.e("lz", x.toString())
 }
 
 fun preMn(date: Date, mn: Long): Date {
