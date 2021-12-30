@@ -1,4 +1,4 @@
-package xx.yy.hou.lz.util.xianhou
+package xx.yy.hou.lz.aaa
 
 // 全局id数量
 // 一个类型队列

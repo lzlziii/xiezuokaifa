@@ -1,8 +1,8 @@
 package xx.yy.hou.lz.queue
 
-import xx.yy.hou.lz.aaa_quanju.Cnt
-import xx.yy.hou.lz.job.PeriodJob
-import xx.yy.hou.lz.aaa_quanju.Queue
+import xx.yy.hou.lz.aaa.Cnt
+import xx.yy.hou.lz.define.PeriodJob
+import xx.yy.hou.lz.aaa.Queue
 
 fun getQueue1(): ArrayList<PeriodJob> {
   return Queue.q1

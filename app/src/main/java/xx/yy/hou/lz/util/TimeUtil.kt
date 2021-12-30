@@ -1,7 +1,7 @@
 package xx.yy.hou.lz.util;
 
-import xx.yy.hou.lz.job.Period
-import xx.yy.hou.lz.job.PeriodType
+import xx.yy.hou.lz.define.Period
+import xx.yy.hou.lz.define.PeriodType
 import java.text.SimpleDateFormat
 import java.util.*
 

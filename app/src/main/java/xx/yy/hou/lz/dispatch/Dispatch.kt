@@ -1,11 +1,11 @@
 package xx.yy.hou.lz.dispatch
 
-import xx.yy.hou.lz.job.PeriodType
-import xx.yy.hou.lz.job.XJob
-import xx.yy.hou.lz.aaa_quanju.Queue.q1
-import xx.yy.hou.lz.aaa_quanju.Queue.q2
-import xx.yy.hou.lz.aaa_quanju.Queue.q4
-import xx.yy.hou.lz.aaa_quanju.Queue.q5
+import xx.yy.hou.lz.define.PeriodType
+import xx.yy.hou.lz.define.XJob
+import xx.yy.hou.lz.aaa.Queue.q1
+import xx.yy.hou.lz.aaa.Queue.q2
+import xx.yy.hou.lz.aaa.Queue.q4
+import xx.yy.hou.lz.aaa.Queue.q5
 import xx.yy.hou.lz.util.debug
 import xx.yy.hou.lz.util.oDay
 import xx.yy.hou.lz.util.oHour

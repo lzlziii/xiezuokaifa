@@ -1,4 +1,4 @@
-package xx.yy.hou.lz.job
+package xx.yy.hou.lz.define
 
 import java.util.*
 

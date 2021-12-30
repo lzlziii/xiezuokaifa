@@ -1,4 +1,4 @@
-package xx.yy.hou.lz.leixing
+package xx.yy.hou.lz.define
 
 import java.io.Serializable
 

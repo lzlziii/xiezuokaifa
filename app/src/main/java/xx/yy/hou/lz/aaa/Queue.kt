@@ -1,8 +1,8 @@
-package xx.yy.hou.lz.aaa_quanju
+package xx.yy.hou.lz.aaa
 
-import xx.yy.hou.lz.job.PeriodJob
-import xx.yy.hou.lz.job.SingleJob
-import xx.yy.hou.lz.job.XJob
+import xx.yy.hou.lz.define.PeriodJob
+import xx.yy.hou.lz.define.SingleJob
+import xx.yy.hou.lz.define.XJob
 import kotlin.collections.ArrayList
 
 object Queue {

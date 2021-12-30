@@ -1,8 +1,8 @@
 package xx.yy.hou.lz.queue
 
-import xx.yy.hou.lz.job.PeriodType
-import xx.yy.hou.lz.job.XJob
-import xx.yy.hou.lz.aaa_quanju.Queue
+import xx.yy.hou.lz.define.PeriodType
+import xx.yy.hou.lz.define.XJob
+import xx.yy.hou.lz.aaa.Queue
 import xx.yy.hou.lz.util.*
 import java.text.SimpleDateFormat
 import java.util.*
