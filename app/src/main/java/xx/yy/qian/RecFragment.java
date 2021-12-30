@@ -22,10 +22,11 @@ import java.util.List;
 public class RecFragment extends Fragment {
     private View view;
     private static RecyclerView recyclerView;
-    private static RecyclerAdapter recyclerAdapter;
     private static Adapter1 adapter1;
     private static Adapter2 adapter2;
     private static Adapter3 adapter3;
+    private static Adapter6 adapter4;
+    private static Adapter6 adapter5;
     private static Adapter6 adapter6;
     private Button button1;
     private Button button2;
@@ -87,7 +88,9 @@ public class RecFragment extends Fragment {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                thinglist = DataSupport.findAll(Thing.class);
+                adapter4 = new Adapter6(thinglist);
+                recyclerView.setAdapter(adapter4);
             }
         });
 
@@ -95,7 +98,9 @@ public class RecFragment extends Fragment {
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                thinglist = DataSupport.findAll(Thing.class);
+                adapter5 = new Adapter6(thinglist);
+                recyclerView.setAdapter(adapter5);
             }
         });
 
@@ -120,9 +125,7 @@ public class RecFragment extends Fragment {
         return view;
     }
     public void refresh(){
-//        thinglist = DataSupport.findAll(Thing.class);
-//        recyclerAdapter = new RecyclerAdapter(thinglist);
-//        recyclerView.setAdapter(recyclerAdapter);
+
     }
 }
 

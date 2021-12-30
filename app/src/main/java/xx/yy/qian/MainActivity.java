@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.text.SimpleDateFormat;
@@ -136,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
 //        mine[1] =minute;
 //      }
 //    });
+
     AlertDialog.Builder builder = new AlertDialog.Builder(context);
     builder.setTitle("添加事务")
             .setView(dialog)
@@ -148,10 +151,15 @@ public class MainActivity extends AppCompatActivity {
                 thing.setDetil(editText.getText().toString());
                 calendar.set(tyear[0],tmonth[0],tday[0],hour[0],mine[0]);
                 calendar2.set(tyear[1],tmonth[1],tday[1],hour[1],mine[1]);
-                thing.setCal(sdf.format(calendar.getTime()));
-                thing.setCal2(sdf.format(calendar2.getTime()));
-                thing.save();
-                ((RecFragment) getSupportFragmentManager().findFragmentByTag("RecFragment")).refresh();
+                LinearLayout layout=(LinearLayout)dialog2.findViewById(R.id.layout01);
+                TextView te=new TextView(context);
+                te.setText(sdf.format(calendar.getTime()));
+                layout.addView(te);
+
+                //thing.setCal(sdf.format(calendar.getTime()));
+                //thing.setCal2(sdf.format(calendar2.getTime()));
+                //thing.save();
+                //((RecFragment) getSupportFragmentManager().findFragmentByTag("RecFragment")).refresh();
                 //getSupportFragmentManager().beginTransaction().replace(R.id.left_fragment, new RecFragment()).commit();
 
               }
@@ -164,33 +172,39 @@ public class MainActivity extends AppCompatActivity {
             });
     AlertDialog alert1 = builder.create();
 
-//    AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
-//    builder.setTitle("添加事务")
-//            .setView(dialog2)
-//            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-//              @Override
-//              public void onClick(DialogInterface dialog, int which) {
-//
-//              }
-//            })
-//            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-//              @Override
-//              public void onClick(DialogInterface dialog, int which) {
-//                //取消不做任何处理
-//              }
-//            });
-//    AlertDialog alert = builder.create();
-//    addthingbutton.setOnClickListener(new View.OnClickListener() {
-//      @Override
-//      public void onClick(View v) {
-//        alert.show();
-//      }
-//    });
+    AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
+    builder.setTitle("添加事务")
+            .setView(dialog2)
+            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+
+              }
+            })
+            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+                //取消不做任何处理
+              }
+            });
+    AlertDialog alert = builder.create();
+    dialog2.findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        alert1.show();
+      }
+    });
+    dialog2.findViewById(R.id.button6).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        alert1.show();
+      }
+    });
 
     toolbar.setNavigationOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        alert1.show();
+        alert.show();
       }
     });
     //DataSupport.deleteAll(Thing.class);

@@ -60,6 +60,7 @@
             android:layout_weight="10" />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/layout01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     <Button
@@ -69,16 +70,17 @@
         android:text="设置开始时间"
         android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/starttime"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:text="****-**-**"
-        android:textSize="20sp"/>
+<!--    <TextView-->
+<!--        android:id="@+id/starttime"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_weight="1"-->
+<!--        android:text="****-**-**"-->
+<!--        android:textSize="20sp"/>-->
 </LinearLayout>
     <LinearLayout
+        android:id="@+id/layout02"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
         <Button
@@ -88,14 +90,14 @@
         android:text="设置结束时间"
         android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/endtime"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:text="****-**-**"
-            android:textSize="20sp"/>
+<!--        <TextView-->
+<!--            android:id="@+id/endtime"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="****-**-**"-->
+<!--            android:textSize="20sp"/>-->
     </LinearLayout>
 
     <Button
