@@ -1,32 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
   <item
-      android:id="@+id/popular"
+      android:id="@+id/wm"
       android:contentDescription="主页"
-      android:icon="@drawable/ic_launcher_foreground"
-      android:title="主页" />
+      android:icon="@drawable/rec"
+      android:title="事务管理" />
 
   <item
-      android:id="@+id/tao"
-      android:contentDescription="微淘"
-      android:icon="@drawable/ic_launcher_foreground"
-      android:title="微淘" />
+      android:id="@+id/tm"
+      android:contentDescription="aslkdjf"
+      android:icon="@drawable/type"
+      android:title="类型管理" />
 
   <item
-      android:id="@+id/message"
-      android:contentDescription="消息"
-      android:icon="@drawable/ic_launcher_foreground"
-      android:title="消息" />
+      android:id="@+id/tj"
+      android:contentDescription="absbasdfuhsd"
+      android:icon="@drawable/total"
+      android:title="统计" />
 
-  <item
-      android:id="@+id/article"
-      android:contentDescription="购物车"
-      android:icon="@drawable/ic_launcher_foreground"
-      android:title="购物车" />
-
-  <item
-      android:id="@+id/person"
-      android:contentDescription="我的淘宝"
-      android:icon="@drawable/ic_launcher_foreground"
-      android:title="我的淘宝" />
 </menu>

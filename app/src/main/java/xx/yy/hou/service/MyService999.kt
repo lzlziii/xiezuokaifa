@@ -17,7 +17,6 @@ class MyService999 : Service() {
   }
 
   override fun onCreate() {
-//    Timer().schedule(TT(), 1000, 2000)
     loadAll(this)
     debug("999服务创建了")
   }
