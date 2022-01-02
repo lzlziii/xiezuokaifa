@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:chart="http://schemas.android.com/apk/res-auto">
+
+    <com.zqx.chart.view.PieChart
+        android:id="@+id/piechart"
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:layout_height="400dp"
+        chart:textColor="@color/colorAccent"
+        chart:textSize="40"
+        />
+
+<!--    &lt;!&ndash; 饼状图颜色属性 &ndash;&gt;-->
+<!--    <integer-array name="pie_colors" >-->
+<!--        <item>@color/colorPrimary</item>-->
+<!--        <item>@android:color/darker_gray</item>-->
+<!--        <item>@android:color/holo_red_dark</item>-->
+<!--        <item>@android:color/holo_green_dark</item>-->
+<!--        <item>@android:color/holo_orange_dark</item>-->
+<!--        <item>@android:color/white</item>-->
+<!--        <item>@android:color/holo_blue_dark</item>-->
+<!--        <item>@color/colorAccent</item>-->
+<!--        <item>@android:color/black</item>-->
+<!--    </integer-array>-->
+<!--&lt;!&ndash;    饼状图自定义属性&ndash;&gt;-->
+<!--    <declare-styleable name="zqxchart_pie">-->
+<!--        &lt;!&ndash; 间隔角度 &ndash;&gt;-->
+<!--        <attr name="separationDegree" format="integer"/>-->
+<!--        &lt;!&ndash; 文字颜色 &ndash;&gt;-->
+<!--        <attr name="textSize" format="integer"/>-->
+<!--        &lt;!&ndash; 文字颜色 &ndash;&gt;-->
+<!--        <attr name="textColor" format="color"/>-->
+<!--        &lt;!&ndash; 动画效果 &ndash;&gt;-->
+<!--        <attr name="panimType">-->
+<!--            <enum name="NONE" value="-1"></enum>-->
+<!--            &lt;!&ndash;enum name="TRANSLATE" value="0"></enum&ndash;&gt;-->
+<!--            <enum name="ALPHA" value="1"></enum>-->
+<!--        </attr>-->
+<!--    </declare-styleable>-->
+
+</LinearLayout>
