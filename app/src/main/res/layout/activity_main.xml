@@ -11,31 +11,48 @@
       android:id="@+id/toolbar"
       android:layout_width="match_parent"
       android:layout_height="?attr/actionBarSize"
-      android:background="@drawable/jb"
-      app:navigationIcon="@drawable/ic_baseline_add_24">
+      android:background="@drawable/jb">
+
+    <TextView
+        android:id="@+id/tianjiashiwu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:text="ADD"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/paixufangshi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="事务排序方式:按时间"
+        android:textSize="16sp" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="right"
-        >
-
-      <ImageView
-          android:id="@+id/handimg"
-          android:layout_width="wrap_content"
-          android:layout_height="match_parent"
-          app:srcCompat="@drawable/ic_launcher_foreground"
-          tools:layout_editor_absoluteX="200dp" />
+        android:layout_gravity="right"
+        tools:ignore="RtlHardcoded">
 
       <TextView
           android:id="@+id/toolbar_title"
-          android:layout_width="wrap_content"
+          android:layout_width="30dp"
           android:layout_height="match_parent"
           android:layout_marginStart="0dp"
+          android:layout_marginEnd="2dp"
           android:gravity="center"
-          android:layout_marginEnd="20dp"
           android:text="时间管理大师"
-          android:textSize="20sp" />
+          android:textSize="12sp" />
+
+      <ImageView
+          android:id="@+id/handimg"
+          android:layout_width="60dp"
+          android:layout_height="match_parent"
+          android:padding="2dp"
+          app:srcCompat="@drawable/lzx"
+          tools:layout_editor_absoluteX="200dp" />
+
     </LinearLayout>
 
   </androidx.appcompat.widget.Toolbar>

@@ -10,10 +10,13 @@
       android:supportsRtl="true"
       android:theme="@style/Theme.Main">
     <activity
+        android:name=".activity.AddWorkActivity"
+        android:exported="false" />
+    <activity
         android:name="xx.yy.hou.login.Main2Activity"
         android:exported="false" />
     <activity
-        android:name="xx.yy.qian.activity.MainActivity"
+        android:name=".activity.MainActivity"
         android:exported="true"
         android:label="This is FirstActivity">
       <intent-filter>

@@ -29,40 +29,46 @@
         android:padding="5dp">
 
       <LinearLayout
+          android:id="@+id/lxButtonList"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/b1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:text="所有类型 > " />
+        <!--        <Button-->
+        <!--            android:id="@+id/b1"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="2dp"-->
+        <!--            android:text="所有类型 > " />-->
 
-        <Button
-            android:id="@+id/b2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:text="作业 > " />
+        <!--        <Button-->
+        <!--            android:id="@+id/b2"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="2dp"-->
+        <!--            android:text="作业 > " />-->
 
-        <Button
-            android:id="@+id/b3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:text="紧急作业" />
+        <!--        <Button-->
+        <!--            android:id="@+id/b3"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="2dp"-->
+        <!--            android:text="紧急作业>" />-->
 
       </LinearLayout>
     </HorizontalScrollView>
 
   </LinearLayout>
 
-  <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/lstype"
+  <RelativeLayout
       android:layout_width="match_parent"
-      android:layout_height="0dp"
-      android:layout_weight="1" />
+      android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lstype"
+        android:layout_width="400dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+  </RelativeLayout>
 
 </LinearLayout>

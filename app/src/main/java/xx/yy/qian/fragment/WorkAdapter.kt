@@ -5,13 +5,13 @@ import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import xx.yy.qian.R
 
 class WorkAdapter : RecyclerView.Adapter<WorkAdapter.ViewHolder>() {
   inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val x: LinearLayout = view.findViewById(R.id.zong)
+    val x: ConstraintLayout = view.findViewById(R.id.zong)
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
