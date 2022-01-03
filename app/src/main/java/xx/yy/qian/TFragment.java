@@ -47,7 +47,8 @@ public class TFragment extends Fragment {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                FragmentTransaction ft = getChildFragmentManager().beginTransaction();
+                ft.replace(R.id.tfragment,new MPFragmentPie()).commit();
             }
         });
 

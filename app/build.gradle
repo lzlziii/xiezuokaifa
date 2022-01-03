@@ -40,6 +40,7 @@ dependencies {
 
     implementation 'com.zqx.chart:chart:0.2'
     implementation 'com.google.firebase:firebase-firestore:22.1.2'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
