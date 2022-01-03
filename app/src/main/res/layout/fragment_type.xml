@@ -5,10 +5,10 @@
     android:id="@+id/fragment_type_linearlayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_margin="10dp"
     android:background="@drawable/shape_corner"
     android:orientation="vertical"
-    android:padding="5dp">
+    android:padding="20dp">
 
   <View
       android:layout_width="match_parent"
@@ -121,7 +121,6 @@
         android:layout_gravity="center_horizontal"
         android:text="删除该类型"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

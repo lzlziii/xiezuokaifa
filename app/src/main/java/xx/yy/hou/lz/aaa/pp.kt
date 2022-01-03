@@ -8,9 +8,11 @@ import xx.yy.hou.lz.define.SingleJob
 import xx.yy.hou.lz.define.XJob
 import xx.yy.hou.lz.util.SerializeUtils
 import java.io.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 // 全局id数量
-// 一个类型队列
+// 两个关于类型的STL
 // 六个队列
 
 fun saveAll(context: Context) {
@@ -20,7 +22,7 @@ fun saveAll(context: Context) {
   writer.use {
     it.write(SerializeUtils.serialize(ArrayList<Any>().apply {
       add(Cnt.cnt)
-      add(LX.leiXing)
+      add(Pair(LX.leiXing, LX.leiXingLink))
       add(Queue.q1)
       add(Queue.q2)
       add(Queue.q4)
@@ -48,31 +50,13 @@ fun loadAll(service: Service): String {
 
   o.apply {
     Cnt.cnt = o[0] as Long
-
-    LX.leiXing = ArrayList<LeiXing>().apply {
-      for (i in o[1] as ArrayList<*>) this.add(i as LeiXing)
-    }
-
-    Queue.q1 = ArrayList<PeriodJob>().apply {
-      for (i in o[2] as ArrayList<*>) this.add(i as PeriodJob)
-    }
-
-    Queue.q2 = ArrayList<SingleJob>().apply {
-      for (i in o[3] as ArrayList<*>) this.add(i as SingleJob)
-    }
-
-    Queue.q4 = ArrayList<XJob>().apply {
-      for (i in o[4] as ArrayList<*>) this.add(i as XJob)
-    }
-
-    Queue.q5 = ArrayList<XJob>().apply {
-      for (i in o[5] as ArrayList<*>) this.add(i as XJob)
-    }
-
-    Queue.q6 = ArrayList<PeriodJob>().apply {
-      for (i in o[5] as ArrayList<*>) this.add(i as PeriodJob)
-    }
-
+    LX.leiXing = (o[1] as Pair<TreeMap<Long, LeiXing>, TreeMap<Long, TreeSet<Long>>>).first
+    LX.leiXingLink = (o[1] as Pair<TreeMap<Long, LeiXing>, TreeMap<Long, TreeSet<Long>>>).second
+    Queue.q1 = o[2] as ArrayList<PeriodJob>
+    Queue.q2 = o[3] as ArrayList<SingleJob>
+    Queue.q4 = o[4] as ArrayList<XJob>
+    Queue.q5 = o[5] as ArrayList<XJob>
+    Queue.q6 = o[6] as ArrayList<PeriodJob>
   }
 
   return content.toString()

@@ -7,16 +7,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import xx.yy.hou.lz.define.*
 import xx.yy.hou.lz.func.getJobByLx
+import xx.yy.hou.lz.func.getLxById
 import xx.yy.hou.lz.func.getSonLx
 import xx.yy.hou.lz.util.debug
+import xx.yy.qian.activity.MainActivity
 import xx.yy.qian.databinding.FragmentTypeBinding
 import xx.yy.qian.databinding.FragmentType2Binding
 import java.lang.StringBuilder
 
 class TypeAdapter(
+  private val mainActivity: MainActivity,
   private val nowCat: String,
-  private val typeList: ArrayList<LeiXing>,
-  private val workList: ArrayList<Job>
+  private val typeListOfCurrentPage: ArrayList<LeiXing>,
+  private val workListOfCurrentPage: ArrayList<Job>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
   inner class ViewHolder(binding: FragmentTypeBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -25,10 +28,9 @@ class TypeAdapter(
     val parentLxName = binding.parentLxName
     val sonName = binding.sonName
     val sonWorkName = binding.sonWorkName
-  }
-
-  inner class ViewHolder2(binding: FragmentType2Binding) : RecyclerView.ViewHolder(binding.root) {
-    val x = binding.fragmentTypeLinearlayout2
+    val jinLx = binding.jinLx
+    val deleteLx = binding.deleteLx
+    val changeLxName = binding.changLxName
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -52,8 +54,8 @@ class TypeAdapter(
       else -> intArrayOf(Color.RED, Color.GRAY)
     }
 
-    if (position < typeList.size) {
-      val me = typeList[position]
+    if (position < typeListOfCurrentPage.size) {
+      val me = typeListOfCurrentPage[position]
       (holder as ViewHolder).apply {
 
         // 类型名称
@@ -74,32 +76,54 @@ class TypeAdapter(
         sonWorkName.text = StringBuilder().apply {
           getJobByLx(me.id).forEachIndexed { index, i ->
             if (index > 0) append(", ")
-            append(
-              when (i) {
-                is PeriodJob -> i.name
-                is SingleJob -> i.name
-                is XJob -> i.name
-                else -> "na ni"
-              }
-            )
+            append(i.name)
           }
         }.toString()
+
+        // 进入下一级目录
+        jinLx.setOnClickListener {
+          mainActivity.pushLx(me)
+        }
+
+        // 删除类型
+        deleteLx.setOnClickListener {
+          mainActivity.askDropLx(me.id)
+        }
+
+        // 更改类型名
+        changeLxName.setOnClickListener {
+          mainActivity.askRenameLx(me.id)
+        }
 
         // 当前item的背景
         layout.background = gd
       }
     } else {
-      val me = workList[position - typeList.size]
+      val me = workListOfCurrentPage[position - typeListOfCurrentPage.size]
       (holder as ViewHolder2).apply {
-        x.background = gd
+        layout.background = gd
+        swName.text = me.name
+        swLx.text = getLxById(me.type)!!.name
+        swStatement.text = me.statement
+        isPeriod.text = "是/否(未实现)"
+        currentQueue.text = "未实现"
       }
     }
   }
 
+  inner class ViewHolder2(binding: FragmentType2Binding) : RecyclerView.ViewHolder(binding.root) {
+    val layout = binding.fragmentTypeLinearlayout2
+    val swName = binding.swName
+    val swLx = binding.swLx
+    val swStatement = binding.swStatement
+    val isPeriod = binding.isPeriod
+    val currentQueue = binding.currentQueue
+  }
+
   override fun getItemViewType(position: Int): Int {
-    return if (position < typeList.size) 0
+    return if (position < typeListOfCurrentPage.size) 0
     else 1
   }
 
-  override fun getItemCount() = typeList.size + workList.size
+  override fun getItemCount() = typeListOfCurrentPage.size + workListOfCurrentPage.size
 }

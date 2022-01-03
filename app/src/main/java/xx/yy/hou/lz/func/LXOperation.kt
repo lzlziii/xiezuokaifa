@@ -4,10 +4,9 @@ import xx.yy.hou.lz.aaa.LX
 import xx.yy.hou.lz.define.Job
 import xx.yy.hou.lz.define.LeiXing
 import xx.yy.hou.lz.queue.*
-
-fun getLeiXing(): ArrayList<LeiXing> {
-  return LX.leiXing
-}
+import xx.yy.hou.lz.util.debug
+import java.util.*
+import kotlin.collections.ArrayList
 
 fun getJobByLx(lxId: Long): ArrayList<Job> {
   return ArrayList<Job>().apply {
@@ -21,28 +20,54 @@ fun getJobByLx(lxId: Long): ArrayList<Job> {
 
 fun getSonLx(lxId: Long): ArrayList<LeiXing> {
   return ArrayList<LeiXing>().apply {
-    for (i in getLeiXing()) if (i.parentId == lxId) this.add(i)
-  }
-}
-
-fun getLxById(lxId: Long): LeiXing? {
-  for (i in getLeiXing()) {
-    if (i.id == lxId) {
-      return i
+    LX.leiXingLink.getOrDefault(lxId, TreeSet()).forEach {
+      add(LX.leiXing[it]!!)
     }
   }
-  return null
 }
 
-fun getParentLxById(lxId: Long): LeiXing? {
-  for (i in getLeiXing()) {
-    if (i.id == lxId) {
-      return getLxById(i.parentId)
+fun getLxById(lxId: Long): LeiXing {
+  return LX.leiXing[lxId]!!
+}
+
+fun getParentLxById(lxId: Long): LeiXing {
+  val pId = LX.leiXing[lxId]!!.parentId
+  return LX.leiXing[pId]!!
+}
+
+fun addLx(parentId: Long, name: String) {
+  val newId = 10000000L + Random().nextLong()
+  debug("newId $newId")
+  LX.leiXing[newId] = LeiXing(newId, parentId, name)
+  if (LX.leiXingLink[parentId] == null) {
+    LX.leiXingLink[parentId] = TreeSet<Long>().apply {
+      add(newId)
     }
+  } else {
+    LX.leiXingLink.getValue(parentId).add(newId)
   }
-  return null
 }
 
-fun addLx(id: Long, parentId: Long, name: String) {
-  LX.leiXing.add(LeiXing(id, parentId, name))
+fun removeLxById(id: Long) {
+
+  // 删除所有该类型的事务
+  getQueue1().dropWhile { it.type == id }
+
+  // 删除父类型的孩子
+  LX.leiXingLink[getParentLxById(id).id]!!.remove(id)
+
+  // 递归删除子类型
+  for (sonId in LX.leiXingLink.getOrDefault(id, TreeSet())) {
+    removeLxById(sonId)
+  }
+
+  // 删除自己的信息
+  LX.leiXing.remove(id)
+
+  // 删除自己的连接信息
+  LX.leiXingLink.remove(id)
+}
+
+fun renameLx(id: Long, name: String) {
+  LX.leiXing[id]!!.name = name
 }
