@@ -18,13 +18,13 @@
                 android:id="@+id/buttont1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thing"/>
+                android:text="本日"/>
 
             <Button
                 android:id="@+id/buttont2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thing"/>
+                android:text="自定义时长统计"/>
 
             <Button
                 android:id="@+id/buttont3"
