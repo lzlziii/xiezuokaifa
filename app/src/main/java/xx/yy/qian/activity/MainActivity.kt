@@ -29,10 +29,7 @@ import xx.yy.hou.service.MyService
 import xx.yy.hou.service.MyService999999
 import xx.yy.qian.R
 import xx.yy.qian.databinding.*
-import xx.yy.qian.fragment.MyAdapter
-import xx.yy.qian.fragment.PeriodAdapter
-import xx.yy.qian.fragment.TypeFragment
-import xx.yy.qian.fragment.WorkFragment
+import xx.yy.qian.fragment.*
 import java.lang.Exception
 import java.lang.StringBuilder
 import java.math.BigInteger
@@ -90,6 +87,10 @@ class MainActivity : AppCompatActivity() {
     } else if (page == 1) {
       buttonAdd.visibility = View.VISIBLE
       supportFragmentManager.beginTransaction().replace(R.id.frameLayout, TypeFragment(this, typeList)).commit()
+
+    }else if(page==2){
+      buttonAdd.visibility = View.VISIBLE
+      supportFragmentManager.beginTransaction().replace(R.id.frameLayout, TotalFragment()).commit()
     }
   }
 
@@ -217,7 +218,7 @@ class MainActivity : AppCompatActivity() {
       when (it.itemId) {
         R.id.wm -> loadPage(0)
         R.id.tm -> loadPage(1)
-        R.id.tj -> {}
+        R.id.tj -> loadPage(2)
       }
       true
     }
