@@ -1,20 +1,22 @@
 package xx.yy.hou.lz.dispatch
 
+import xx.yy.hou.lz.aaa.Queue.q
+import xx.yy.hou.lz.define.PeriodJob
 import xx.yy.hou.lz.define.PeriodType
+import xx.yy.hou.lz.define.SingleJob
 import xx.yy.hou.lz.define.XJob
-import xx.yy.hou.lz.aaa.Queue.q1
-import xx.yy.hou.lz.aaa.Queue.q2
-import xx.yy.hou.lz.aaa.Queue.q4
-import xx.yy.hou.lz.aaa.Queue.q5
+import xx.yy.hou.lz.queue.getQueue1
 import xx.yy.hou.lz.util.debug
 import xx.yy.hou.lz.util.oDay
 import xx.yy.hou.lz.util.oHour
 import xx.yy.hou.lz.util.oWeek
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 fun q1q4(now: Date) {
-  for (i in q1) {
+  for (i in getQueue1()) {
+    if (i !is PeriodJob) break
     for (j in i.periodList) {
       var fillDateSt = now
       var fillDateEd = now
@@ -38,7 +40,7 @@ fun q1q4(now: Date) {
       }
       val sdf = SimpleDateFormat("yyyy MM dd HH mm", Locale.ENGLISH)
       if (sdf.format(now) == sdf.format(fillDateSt)) {
-        q4.add(XJob(i.type, i.id, i.name, i.statement, fillDateSt, fillDateEd))
+        q[3].add(XJob(i.type, i.id, i.name, i.statement, i.priority, fillDateSt, fillDateEd))
         break
       }
     }
@@ -46,19 +48,21 @@ fun q1q4(now: Date) {
 }
 
 fun q2q4(now: Date) {
-  q2.sort()
-  while (q2.isNotEmpty() && q2.first().st.time <= now.time) {
-    val a = q2.removeFirst()
-    val b = XJob(a.type, a.id, a.name, a.statement, a.st, a.ed)
-    q4.add(b)
+  val z = q[1] as ArrayList<SingleJob>
+  z.sort()
+  while (z.isNotEmpty() && z.first().st.time <= now.time) {
+    val a = z.removeFirst()
+    val b = XJob(a.type, a.id, a.name, a.statement, a.priority, a.st, a.ed)
+    q[3].add(b)
   }
 }
 
 fun q4q5(now: Date) {
-  q4.sort()
-  while (q4.isNotEmpty() && q4.first().ed.before(now)) {
-    val a = q4.removeFirst()
-    q5.add(a)
+  val z = q[3] as ArrayList<XJob>
+  z.sort()
+  while (z.isNotEmpty() && z.first().ed.before(now)) {
+    val a = z.removeFirst()
+    q[4].add(a)
   }
 }
 

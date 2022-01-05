@@ -17,7 +17,7 @@ class MyService999 : Service() {
   }
 
   override fun onCreate() {
-    loadAll(this)
+//    loadAll(this)
     debug("999服务创建了")
   }
 
@@ -26,7 +26,7 @@ class MyService999 : Service() {
   }
 
   override fun onDestroy() {
-    saveAll(this)
+//    saveAll(this)
     super.onDestroy()
     debug("999服务没了")
   }

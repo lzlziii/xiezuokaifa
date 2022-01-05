@@ -13,21 +13,35 @@
       android:layout_height="?attr/actionBarSize"
       android:background="@drawable/jb">
 
-    <TextView
-        android:id="@+id/tianjiashiwu"
+    <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
-        android:text="ADD"
-        android:textSize="16sp" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/paixufangshi"
+      <Button
+          android:id="@+id/add"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+          android:layout_marginEnd="10dp"
+          android:text="ADD" />
+
+      <TextView
+          android:id="@+id/currentJob"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:layout_marginEnd="10dp"
+          android:gravity="center_vertical"
+          android:text="当前事务:" />
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/sortType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="事务排序方式:按时间"
-        android:textSize="16sp" />
+        android:layout_gravity="center_vertical"
+        android:text="选择事务排序方式"
+        android:textSize="15sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"

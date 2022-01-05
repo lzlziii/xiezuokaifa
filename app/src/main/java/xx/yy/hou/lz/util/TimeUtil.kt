@@ -107,3 +107,13 @@ fun ooHour(x: Date, y: Date, u: Long): Date {
   val t = oHour(x, y)
   return Date(t.time - u * 60L * 1000L)
 }
+
+fun String.parseDate(): Date {
+  val sdf = SimpleDateFormat("yyyy年MM月dd日HH时mm分", Locale.ENGLISH)
+  return sdf.parse(this)!!
+}
+
+fun Date.generateString(): String {
+  val sdf = SimpleDateFormat("yyyy年MM月dd日HH时mm分", Locale.ENGLISH)
+  return sdf.format(this)
+}

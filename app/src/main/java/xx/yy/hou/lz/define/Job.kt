@@ -7,7 +7,8 @@ open class Job(
   var id: Long = -1,
   var name: String = "",
   var statement: String = "",
-): Serializable {
+  var priority: Long = -1,
+) : Serializable {
 
   override fun toString(): String {
     return "Job(type=$type, id=$id, name='$name', statement='$statement')"

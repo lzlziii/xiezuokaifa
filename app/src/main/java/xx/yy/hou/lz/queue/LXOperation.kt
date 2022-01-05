@@ -1,20 +1,26 @@
-package xx.yy.hou.lz.func
+package xx.yy.hou.lz.queue
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import xx.yy.hou.lz.aaa.LX
+import xx.yy.hou.lz.aaa.Queue
 import xx.yy.hou.lz.define.Job
 import xx.yy.hou.lz.define.LeiXing
-import xx.yy.hou.lz.queue.*
-import xx.yy.hou.lz.util.debug
+import xx.yy.hou.lz.util.generateId
 import java.util.*
 import kotlin.collections.ArrayList
 
+fun Job.getLxName(): String {
+  return getLxById(this.type).name
+}
+
 fun getJobByLx(lxId: Long): ArrayList<Job> {
   return ArrayList<Job>().apply {
-    for (i in getQueue1()) if (i.type == lxId) this.add(i)
-    for (i in getQueue2()) if (i.type == lxId) this.add(i)
-    for (i in getQueue4()) if (i.type == lxId) this.add(i)
-    for (i in getQueue5()) if (i.type == lxId) this.add(i)
-    for (i in getQueue6()) if (i.type == lxId) this.add(i)
+    getAllJob().forEach {
+      if (it.type == lxId) {
+        add(it)
+      }
+    }
   }
 }
 
@@ -36,8 +42,7 @@ fun getParentLxById(lxId: Long): LeiXing {
 }
 
 fun addLx(parentId: Long, name: String) {
-  val newId = 10000000L + Random().nextLong()
-  debug("newId $newId")
+  val newId = generateId()
   LX.leiXing[newId] = LeiXing(newId, parentId, name)
   if (LX.leiXingLink[parentId] == null) {
     LX.leiXingLink[parentId] = TreeSet<Long>().apply {
@@ -48,10 +53,15 @@ fun addLx(parentId: Long, name: String) {
   }
 }
 
+@RequiresApi(Build.VERSION_CODES.N)
 fun removeLxById(id: Long) {
 
   // 删除所有该类型的事务
-  getQueue1().dropWhile { it.type == id }
+  Queue.q.forEach { x ->
+    x.removeIf {
+      it.type == id
+    }
+  }
 
   // 删除父类型的孩子
   LX.leiXingLink[getParentLxById(id).id]!!.remove(id)

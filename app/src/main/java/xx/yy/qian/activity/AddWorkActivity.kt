@@ -7,7 +7,7 @@ import xx.yy.qian.R
 class AddWorkActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.dialog_work)
+    setContentView(R.layout.dialog_add_work)
     supportActionBar?.hide()
   }
 }

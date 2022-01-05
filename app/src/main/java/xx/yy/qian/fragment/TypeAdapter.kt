@@ -6,10 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import xx.yy.hou.lz.define.*
-import xx.yy.hou.lz.func.getJobByLx
-import xx.yy.hou.lz.func.getLxById
-import xx.yy.hou.lz.func.getSonLx
-import xx.yy.hou.lz.util.debug
+import xx.yy.hou.lz.queue.getJobByLx
+import xx.yy.hou.lz.queue.getLxById
+import xx.yy.hou.lz.queue.getSonLx
 import xx.yy.qian.activity.MainActivity
 import xx.yy.qian.databinding.FragmentTypeBinding
 import xx.yy.qian.databinding.FragmentType2Binding
@@ -42,7 +41,6 @@ class TypeAdapter(
 
   override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-    debug(position)
     val gd = GradientDrawable()
     // gd.setColor(Color.parseColor("#00ff00"));
     gd.cornerRadius = 40f
@@ -103,7 +101,7 @@ class TypeAdapter(
       (holder as ViewHolder2).apply {
         layout.background = gd
         swName.text = me.name
-        swLx.text = getLxById(me.type)!!.name
+        swLx.text = getLxById(me.type).name
         swStatement.text = me.statement
         isPeriod.text = "是/否(未实现)"
         currentQueue.text = "未实现"

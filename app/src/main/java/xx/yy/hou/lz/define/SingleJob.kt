@@ -9,10 +9,11 @@ class SingleJob(
   id: Long = -1,
   name: String = "",
   statement: String = "",
+  priority: Long = -1L,
   var st: Date = Date(), // 开始时间, 如果是周期性事件无开始结束
   var ed: Date = Date(), // 结束时间
   var alarm: Long = -1, // 提前多少分钟提醒
-) : Job(type, id, name, statement), Serializable, Comparable<SingleJob> {
+) : Job(type, id, name, statement, priority), Serializable, Comparable<SingleJob> {
 
   override fun compareTo(other: SingleJob): Int {
     return if (this.st.time != other.st.time) {

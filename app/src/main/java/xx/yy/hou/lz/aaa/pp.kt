@@ -2,10 +2,7 @@ package xx.yy.hou.lz.aaa
 
 import android.app.Service
 import android.content.Context
-import xx.yy.hou.lz.define.LeiXing
-import xx.yy.hou.lz.define.PeriodJob
-import xx.yy.hou.lz.define.SingleJob
-import xx.yy.hou.lz.define.XJob
+import xx.yy.hou.lz.define.*
 import xx.yy.hou.lz.util.SerializeUtils
 import java.io.*
 import java.util.*
@@ -23,11 +20,7 @@ fun saveAll(context: Context) {
     it.write(SerializeUtils.serialize(ArrayList<Any>().apply {
       add(Cnt.cnt)
       add(Pair(LX.leiXing, LX.leiXingLink))
-      add(Queue.q1)
-      add(Queue.q2)
-      add(Queue.q4)
-      add(Queue.q5)
-      add(Queue.q6)
+      add(Queue.q)
     }))
   }
 
@@ -52,11 +45,7 @@ fun loadAll(service: Service): String {
     Cnt.cnt = o[0] as Long
     LX.leiXing = (o[1] as Pair<TreeMap<Long, LeiXing>, TreeMap<Long, TreeSet<Long>>>).first
     LX.leiXingLink = (o[1] as Pair<TreeMap<Long, LeiXing>, TreeMap<Long, TreeSet<Long>>>).second
-    Queue.q1 = o[2] as ArrayList<PeriodJob>
-    Queue.q2 = o[3] as ArrayList<SingleJob>
-    Queue.q4 = o[4] as ArrayList<XJob>
-    Queue.q5 = o[5] as ArrayList<XJob>
-    Queue.q6 = o[6] as ArrayList<PeriodJob>
+    Queue.q = (o[2] as ArrayList<ArrayList<Job>>)
   }
 
   return content.toString()

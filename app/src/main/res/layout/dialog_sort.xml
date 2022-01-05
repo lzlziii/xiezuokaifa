@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+  <TextView
+      android:id="@+id/sortTimeSt"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center_horizontal"
+      android:padding="10dp"
+      android:text="按开始时间(正序, 默认)"
+      android:textSize="20sp" />
+
+  <TextView
+      android:padding="10dp"
+      android:id="@+id/sortTimeStInv"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center_horizontal"
+      android:text="按开始时间(逆序)"
+      android:textSize="20sp" />
+
+  <TextView
+      android:padding="10dp"
+      android:id="@+id/sortTimeEd"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center_horizontal"
+      android:text="按结束时间(正序)"
+      android:textSize="20sp" />
+
+  <TextView
+      android:padding="10dp"
+      android:id="@+id/sortTimeEdInv"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center_horizontal"
+      android:text="按结束时间(逆序)"
+      android:textSize="20sp" />
+
+  <TextView
+      android:padding="10dp"
+      android:id="@+id/sortPriority"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center_horizontal"
+      android:text="按优先级(由小到大)"
+      android:textSize="20sp" />
+
+  <TextView
+      android:padding="10dp"
+      android:id="@+id/sortPriorityInv"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center_horizontal"
+      android:text="按优先级(由大到小)"
+      android:textSize="20sp" />
+
+</LinearLayout>

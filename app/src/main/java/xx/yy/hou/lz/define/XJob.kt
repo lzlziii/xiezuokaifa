@@ -8,9 +8,10 @@ class XJob(
   id: Long,
   name: String,
   statement: String,
+  priority: Long,
   var st: Date, // 开始时间
   var ed: Date, // 结束时间
-) : Job(type, id, name, statement), Serializable, Comparable<XJob> {
+) : Job(type, id, name, statement, priority), Serializable, Comparable<XJob> {
 
   override fun compareTo(other: XJob): Int {
     return if (this.st.time != other.st.time) {

@@ -19,42 +19,42 @@
         android:orientation="horizontal">
 
       <Button
-          android:id="@+id/buttont1"
+          android:id="@+id/q1"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_margin="2dp"
           android:text="周期性事务" />
 
       <Button
-          android:id="@+id/buttont2"
+          android:id="@+id/q2"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_margin="2dp"
           android:text="未开始的普通事务" />
 
       <Button
-          android:id="@+id/buttont3"
+          android:id="@+id/q3"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_margin="2dp"
           android:text="即将开始的事务" />
 
       <Button
-          android:id="@+id/buttont4"
+          android:id="@+id/q4"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_margin="2dp"
           android:text="正在进行的事务" />
 
       <Button
-          android:id="@+id/buttont5"
+          android:id="@+id/q5"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_margin="2dp"
           android:text="已完成的事务" />
 
       <Button
-          android:id="@+id/buttont6"
+          android:id="@+id/q6"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_margin="2dp"
