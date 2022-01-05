@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="xx.yy.hou.login.Main2Activity">
+    tools:context="xx.yy.hou.login.PreActivity">
 
   <Button
       android:id="@+id/startServiceBtn"

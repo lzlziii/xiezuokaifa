@@ -7,6 +7,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.IBinder
+import android.os.StrictMode
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
@@ -14,6 +15,9 @@ import android.widget.AdapterView.OnItemSelectedListener
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
+import xx.yy.hou.lz.aaa.Utils
+import xx.yy.hou.lz.aaa.loadAll
+import xx.yy.hou.lz.aaa.saveAll
 import xx.yy.hou.lz.define.LeiXing
 import xx.yy.hou.lz.define.Period
 import xx.yy.hou.lz.define.PeriodJob
@@ -31,6 +35,7 @@ import xx.yy.qian.fragment.TypeFragment
 import xx.yy.qian.fragment.WorkFragment
 import java.lang.Exception
 import java.lang.StringBuilder
+import java.math.BigInteger
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -102,6 +107,26 @@ class MainActivity : AppCompatActivity() {
     loadPage(1)
   }
 
+  override fun onStop() {
+    super.onStop()
+    try {
+      saveAll(this)
+    } catch (e: Exception) {
+      e.printStackTrace()
+      showToast("保存数据失败")
+    }
+  }
+
+  override fun onResume() {
+    super.onResume()
+    try {
+      loadAll(this)
+    } catch (e: Exception) {
+      e.printStackTrace()
+      showToast("加载数据失败")
+    }
+  }
+
   private var askId = -1L
 
   lateinit var alertRemoveLx: Dialog
@@ -149,12 +174,18 @@ class MainActivity : AppCompatActivity() {
   private val connection = object : ServiceConnection {
     override fun onServiceConnected(name: ComponentName, service: IBinder) {
     }
+
     override fun onServiceDisconnected(name: ComponentName) {
     }
   }
+
   @SuppressLint("SetTextI18n")
   @RequiresApi(Build.VERSION_CODES.O)
   override fun onCreate(savedInstanceState: Bundle?) {
+
+    val policy = StrictMode.ThreadPolicy.Builder().permitAll().build();
+    StrictMode.setThreadPolicy(policy)
+
     super.onCreate(savedInstanceState)
     val activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
     setContentView(activityMainBinding.root)

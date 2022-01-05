@@ -29,6 +29,8 @@ fun getJobByLx(lxId: Long): ArrayList<Job> {
   }
 }
 
+
+
 fun getSonLx(lxId: Long): ArrayList<LeiXing> {
   return ArrayList<LeiXing>().apply {
     LX.leiXingLink.getOrDefault(lxId, TreeSet()).forEach {
