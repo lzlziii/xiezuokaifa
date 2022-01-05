@@ -10,6 +10,11 @@ import xx.yy.hou.lz.util.generateId
 import java.util.*
 import kotlin.collections.ArrayList
 
+
+fun Long.parLxName(): String {
+  return arrayListOf("按年", "按月", "按周", "按日", "按小时")[this.toInt()]
+}
+
 fun Job.getLxName(): String {
   return getLxById(this.type).name
 }

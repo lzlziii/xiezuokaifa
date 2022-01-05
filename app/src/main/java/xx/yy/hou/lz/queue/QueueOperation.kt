@@ -144,14 +144,18 @@ fun getQueue(whichQueue: Int): ArrayList<Job> {
 fun addSingleJob(x: SingleJob) {
   x.id = generateId()
   val now = getNoSecondDate()
-  if (x.st.after(now)) { // 已经结束
+  if (x.ed.before(now) || x.ed.time == now.time) { // 已经结束
     debug("jin 55555555555")
     addQueue4(XJob(x.type, x.id, x.name, x.statement, x.priority, x.st, x.ed))
-  } else if (x.ed.time == now.time || x.ed.after(now)) { // 正在进行
+  } else if (x.st.time <= now.time && x.ed.after(now)) { // 正在进行
     debug("jin 44444444 正在进行")
     addQueue3(XJob(x.type, x.id, x.name, x.statement, x.priority, x.st, x.ed))
   } else {
     debug("jin 22222222222")
     addQueue1(x) // 还未开始
   }
+}
+
+fun addPJ(typeId: Long, name: String, sta: String, you: Long, ti: Long, list: java.util.ArrayList<Period>) {
+  addQueue0(PeriodJob(typeId, generateId(), name, sta, you, list, ti))
 }

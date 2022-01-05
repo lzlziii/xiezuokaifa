@@ -24,6 +24,7 @@
           android:textSize="20sp" />
 
       <EditText
+          android:id="@+id/pjobname"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="10" />
@@ -41,6 +42,7 @@
           android:textSize="20sp" />
 
       <EditText
+          android:id="@+id/pjobstatement"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="10" />
@@ -54,9 +56,12 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="设置优先级"
+
           android:textSize="18sp" />
 
       <EditText
+          android:id="@+id/pjyou"
+          android:text="5"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="10" />
@@ -70,13 +75,17 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="提前提醒时间(分钟)"
+
           android:textSize="18sp" />
 
       <EditText
+          android:id="@+id/pjti"
+          android:text="30"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="10" />
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -85,6 +94,7 @@
         android:orientation="vertical">
 
       <Button
+          android:id="@+id/tianP"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_gravity="center_horizontal"
@@ -93,6 +103,7 @@
           android:textSize="20sp" />
 
       <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/peroidList"
           android:layout_width="match_parent"
           android:layout_height="wrap_content" />
     </LinearLayout>

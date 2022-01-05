@@ -2,29 +2,31 @@ package xx.yy.qian.activity
 
 import android.annotation.SuppressLint
 import android.app.Dialog
-import android.content.DialogInterface
-import android.content.Intent
+import android.content.*
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.IBinder
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.view.ViewGroup
+import android.widget.*
+import android.widget.AdapterView.OnItemSelectedListener
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
 import xx.yy.hou.lz.define.LeiXing
+import xx.yy.hou.lz.define.Period
+import xx.yy.hou.lz.define.PeriodJob
 import xx.yy.hou.lz.define.SingleJob
-import xx.yy.hou.lz.queue.addLx
-import xx.yy.hou.lz.queue.getLxById
-import xx.yy.hou.lz.queue.removeLxById
-import xx.yy.hou.lz.queue.renameLx
-import xx.yy.hou.lz.queue.addSingleJob
+import xx.yy.hou.lz.queue.*
 import xx.yy.hou.lz.util.debug
 import xx.yy.hou.lz.util.parseDate
 import xx.yy.hou.service.MyService
+import xx.yy.hou.service.MyService999999
 import xx.yy.qian.R
 import xx.yy.qian.databinding.*
+import xx.yy.qian.fragment.MyAdapter
+import xx.yy.qian.fragment.PeriodAdapter
 import xx.yy.qian.fragment.TypeFragment
 import xx.yy.qian.fragment.WorkFragment
 import java.lang.Exception
@@ -36,10 +38,10 @@ import kotlin.math.abs
 
 class MainActivity : AppCompatActivity() {
 
+  private val periodList = ArrayList<Period>()
+
   private val typeList = ArrayList<LeiXing>().apply { this.add(getLxById(0)) }
-
   private val singleJob = SingleJob(-1, -1, "事务", "", 5L, Date(), Date(), 30L)
-
   var whichQueue = 0 // 第一个页面当前显示哪个队列
 
   fun showToast(msg: String) {
@@ -144,14 +146,22 @@ class MainActivity : AppCompatActivity() {
 
   lateinit var alertJobOperation: Dialog
 
-
-
+  private val connection = object : ServiceConnection {
+    override fun onServiceConnected(name: ComponentName, service: IBinder) {
+    }
+    override fun onServiceDisconnected(name: ComponentName) {
+    }
+  }
   @SuppressLint("SetTextI18n")
   @RequiresApi(Build.VERSION_CODES.O)
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     val activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
     setContentView(activityMainBinding.root)
+
+    val intent = Intent(this, MyService999999::class.java)
+    bindService(intent, connection, Context.BIND_AUTO_CREATE) // 绑定Service
+
     buttonAdd = activityMainBinding.add
     currentJob = activityMainBinding.currentJob
     sortType = activityMainBinding.sortType
@@ -162,6 +172,7 @@ class MainActivity : AppCompatActivity() {
     val dialogAddWorkBinding = DialogAddWorkBinding.inflate(layoutInflater)
     val dialogAddWorkPeroidBinding = DialogAddWorkPeroidBinding.inflate(layoutInflater)
     val dialogSortBinding = DialogSortBinding.inflate(layoutInflater)
+    val dialogPeroidBinding = DialogPeroidBinding.inflate(layoutInflater)
 
     startService(Intent(this, MyService::class.java))
 
@@ -345,10 +356,130 @@ class MainActivity : AppCompatActivity() {
       }
       .create()
 
+
     // 添加周期性事务
     val alertAddWorkPeroid = builder.setTitle("添加周期性事务")
       .setView(dialogAddWorkPeroidBinding.root)
+      .setPositiveButton("确定") { _, _ ->
+        val name = dialogAddWorkPeroidBinding.pjobname.text.toString()
+        val sta = dialogAddWorkPeroidBinding.pjobstatement.text.toString()
+        val you = dialogAddWorkPeroidBinding.pjyou.text.toString().toLong()
+        val ti = dialogAddWorkPeroidBinding.pjti.text.toString().toLong()
+        addPJ(typeList.last().id, name, sta, you, ti, periodList)
+        periodList.clear()
+      }
+      .setNegativeButton("取消") { _, _ ->
+
+        periodList.clear()
+      }
       .create()
+
+    dialogAddWorkPeroidBinding.peroidList.layoutManager = LinearLayoutManager(this)
+    dialogAddWorkPeroidBinding.peroidList.adapter = PeriodAdapter(periodList)
+
+    var periodT = 0L
+    val stst = arrayListOf("", "", "", "", "")
+    val eded = arrayListOf("", "", "", "", "")
+
+    dialogPeroidBinding.spinnerType.also {
+      it.adapter = MyAdapter(this, 0)
+      it.onItemSelectedListener = object : OnItemSelectedListener {
+        override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
+          periodT = 4L - position
+          debug(periodT)
+        }
+
+        override fun onNothingSelected(parent: AdapterView<*>?) {
+        }
+      }
+
+    }
+
+    dialogPeroidBinding.spinnerSt.also {
+      it.adapter = MyAdapter(this, 1)
+      it.onItemSelectedListener = object : OnItemSelectedListener {
+        override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
+          stst[4] = ("Mon Tue Wed Thu Fri Sat Sun").split(' ')[position]
+        }
+
+        override fun onNothingSelected(parent: AdapterView<*>?) {
+        }
+      }
+    }
+
+    dialogPeroidBinding.spinnerEd.also {
+      it.adapter = MyAdapter(this, 2)
+      it.onItemSelectedListener = object : OnItemSelectedListener {
+        override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
+          eded[4] = ("Mon Tue Wed Thu Fri Sat Sun").split(' ')[position]
+        }
+
+        override fun onNothingSelected(parent: AdapterView<*>?) {
+        }
+      }
+
+    }
+
+
+    val alertPeroid = builder.setTitle("AAA")
+      .setView(dialogPeroidBinding.root)
+      .setPositiveButton("确定添加") { _, _ ->
+        dialogPeroidBinding.apply {
+          arrayListOf(
+            yue1.text.toString(),
+            ri1.text.toString(),
+            shi1.text.toString(),
+            fen1.text.toString(),
+          ).forEachIndexed { index, s ->
+            stst[index] = s
+          }
+        }
+
+        dialogPeroidBinding.apply {
+          arrayListOf(
+            yue2.text.toString(),
+            ri2.text.toString(),
+            shi2.text.toString(),
+            fen2.text.toString(),
+          ).forEachIndexed { index, s ->
+            eded[index] = s
+          }
+        }
+        periodList.add(Period(-1, Date(), Date()).apply {
+          type = periodT
+          fun f(): String {
+            return when (type) {
+              0L -> "MM dd HH mm"
+              1L -> "dd HH mm"
+              2L -> "HH mm EEEE"
+              3L -> "HH mm"
+              4L -> "mm"
+              else -> ""
+            }
+          }
+          st = SimpleDateFormat(f(), Locale.ENGLISH).parse(StringBuilder().apply {
+            stst.forEach {
+              append(" ")
+              append(it)
+            }
+          }.toString())!!
+          ed = SimpleDateFormat(f(), Locale.ENGLISH).parse(StringBuilder().apply {
+            eded.forEach {
+              append(" ")
+              append(it)
+            }
+          }.toString())!!
+        })
+        debug(periodList)
+        dialogAddWorkPeroidBinding.peroidList.adapter = PeriodAdapter(periodList)
+      }
+      .setNegativeButton("取消") { _, _ -> }
+      .create()
+
+    dialogAddWorkPeroidBinding.tianP.setOnClickListener {
+      alertPeroid.show()
+    }
+
 
     // 自动填充信息
     fun loadJob() {
@@ -385,4 +516,5 @@ class MainActivity : AppCompatActivity() {
     }
 
   }
+
 }
