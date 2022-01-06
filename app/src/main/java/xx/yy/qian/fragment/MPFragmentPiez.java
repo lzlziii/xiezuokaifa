@@ -26,7 +26,7 @@ public class MPFragmentPiez extends Fragment {
 
     public MPFragmentPiez(ArrayList<PieEntry> arrayList)
     {
-        //strings.add(new PieEntry(100f,"null"));//add数据项
+        this.strings=arrayList;
         //构建函数写进去List
     }
 

@@ -122,7 +122,6 @@ public class MPFragmentPie extends Fragment {
             //选择好了开始结束时间
             TreeMap<String, Long> x = new TreeMap<>();
             for (Job job : tstring) {
-
               if (job instanceof SingleJob) {
                 SingleJob sj = (SingleJob) job;
                 if (sj.getSt().after(date1) && sj.getEd().before(date2)) {
@@ -197,7 +196,16 @@ public class MPFragmentPie extends Fragment {
             }
             //在这里使用date1和date2获取List
             PieChart picChart = view.findViewById(R.id.pic_chart);
+
             PieDataSet dataSet = new PieDataSet(strings, "统计");
+            ArrayList<Integer> colors = new ArrayList<Integer>();
+            colors.add(getResources().getColor(R.color.black));
+            colors.add(getResources().getColor(R.color.purple_700));
+            colors.add(getResources().getColor(R.color.white));
+            colors.add(getResources().getColor(R.color.purple_200));
+            colors.add(getResources().getColor(R.color.teal_200));//数据背景颜色
+            dataSet.setColors(colors);
+
             PieData pieData = new PieData(dataSet);
             pieData.setDrawValues(true);
             pieData.setDrawValues(true);
@@ -207,6 +215,17 @@ public class MPFragmentPie extends Fragment {
             picChart.setDescription(description);
             picChart.setData(pieData);
             picChart.invalidate();
+//            PieChart picChart = view.findViewById(R.id.pic_chart);
+//            PieDataSet dataSet = new PieDataSet(strings, "统计");
+//            PieData pieData = new PieData(dataSet);
+//            pieData.setDrawValues(true);
+//            pieData.setDrawValues(true);
+//            pieData.setValueFormatter(new PercentFormatter());
+//            Description description = new Description();
+//            description.setText("");
+//            picChart.setDescription(description);
+//            picChart.setData(pieData);
+//            picChart.invalidate();
             //Log.d("ceshi","asdfasd");
           }
         }
@@ -235,6 +254,7 @@ public class MPFragmentPie extends Fragment {
         textView4.setVisibility(View.VISIBLE);
       }
     });
+
     PieChart picChart = view.findViewById(R.id.pic_chart);
 
     PieDataSet dataSet = new PieDataSet(strings, "统计");

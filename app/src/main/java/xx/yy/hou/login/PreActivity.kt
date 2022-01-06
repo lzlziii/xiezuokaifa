@@ -23,11 +23,11 @@ class PreActivity : AppCompatActivity() {
     setContentView(activityPreBinding.root)
 
     activityPreBinding.loginButton.setOnClickListener {
-      if (Utils.check(activityPreBinding.inputText1.text.toString(), activityPreBinding.inputText2.text.toString()) == false) {
-        Toast.makeText(this, "账号或者密码错误", Toast.LENGTH_SHORT).show()
-      } else {
+//      if (Utils.check(activityPreBinding.inputText1.text.toString(), activityPreBinding.inputText2.text.toString()) == false) {
+//        Toast.makeText(this, "账号或者密码错误", Toast.LENGTH_SHORT).show()
+//      } else {
         startActivity(Intent(this, MainActivity::class.java))
-      }
+//      }
     }
 
   }
